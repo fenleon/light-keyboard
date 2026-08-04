@@ -1,2 +1,3 @@
 /build
-/src/main/res/font
+/src/androidMain/res/font
+/src/wasmJsMain/localFonts

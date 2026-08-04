@@ -3,8 +3,6 @@ package com.thelightphone.lp3keyboard
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.text.TextUtils
-import android.view.View
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
@@ -83,13 +81,7 @@ fun Options() {
         Spacer(modifier = Modifier.height(16.dp))
         // Follow the layout's own direction so an RTL layout types into a field that behaves like
         // a real Arabic one: right-aligned, with the caret travelling leftward.
-        val direction =
-            if (TextUtils.getLayoutDirectionFromLocale(selected.locale) == View.LAYOUT_DIRECTION_RTL) {
-                LayoutDirection.Rtl
-            } else {
-                LayoutDirection.Ltr
-            }
-        CompositionLocalProvider(LocalLayoutDirection provides direction) {
+        CompositionLocalProvider(LocalLayoutDirection provides selected.layoutDirection) {
             TextField(
                 value = text,
                 onValueChange = setValue,
