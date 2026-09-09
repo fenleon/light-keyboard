@@ -13,8 +13,6 @@ class NumericLp3KeyboardViewModel<SwipeResult>(
     swipeCallback: Lp3KeyboardSwipeCallback<SwipeResult>? = null,
     haptic: () -> Unit = {},
     optionsForLayout: (Layout) -> LayoutOptions = {
-        // No close chevron — the pad has no sub-layouts to fall back to and
-        // the IME dismisses via back. (Embedded consumers pass their own.)
         LayoutOptions(displayCloseButton = false)
     },
     keyboardOptionsFlow: StateFlow<KeyboardOptions> = MutableStateFlow(
