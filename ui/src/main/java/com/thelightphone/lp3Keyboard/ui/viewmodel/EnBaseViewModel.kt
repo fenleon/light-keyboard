@@ -91,7 +91,7 @@ abstract class EnBaseViewModel<SwipeResult>(
         )
     }
 
-    private fun isOnSymbolsOrNumbers() =
+    protected open fun isOnSymbolsOrNumbers() =
         layoutFlow.value is EnShared.SymbolsLayout || layoutFlow.value is EnShared.NumberLayout
 
     override fun onKeyPressed(code: Int) {
