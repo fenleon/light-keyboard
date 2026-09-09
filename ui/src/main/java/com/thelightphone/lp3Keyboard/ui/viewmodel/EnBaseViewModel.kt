@@ -128,12 +128,11 @@ abstract class EnBaseViewModel<SwipeResult>(
         // Finger left the key bounds — treat as the start of a swipe (or a
         // deliberate tap-cancel). Clean up press state but don't fire the IME
         // release, which is where text actually gets committed.
-        // A long-press that opened the extended-char keyboard swaps the layout
-        // while the gesture is still active; disposing the original key node
-        // cancels its pointer input and lands here. Swallow that cancel (same
-        // as the onKeyReleased hold-swallow) so the extended keyboard stays up
-        // until the user picks a variant or taps another key.
-        if (heldKeys.remove(code)?.apply { cancel() } != null) return
+        val heldKey = heldKeys.remove(code)
+        if (heldKey != null) {
+            heldKey.cancel()
+            return
+        }
         if (layoutFlow.value is EnShared.ExtendedCharKeyboard) {
             setLayout(previousLayout ?: lowerCaseLayout)
         }
