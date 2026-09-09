@@ -53,8 +53,6 @@ object NumericPadLayout : Layout {
         DefaultRow(height = ROW_HEIGHT_DP.dp) {
             Spacer(Modifier.width(KEY_WIDTH_DP.dp))
             Key('0'.code, callback, null, options.enableKeyAnimation, width = KEY_WIDTH_DP.dp)
-            // Same back_lp3 chevron, scaled to the close chevron's rendered
-            // footprint (~20x12 dp) rotated: 12 wide x 20 tall.
             IconKey(
                 R.drawable.back_lp3,
                 SpecialKey.Backspace,
