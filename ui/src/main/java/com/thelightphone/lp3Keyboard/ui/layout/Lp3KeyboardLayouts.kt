@@ -44,7 +44,7 @@ enum class LayoutRegistryItem(
     EnColemak(Locale.ENGLISH, "colemak", "Colemak (English)"),
     FrAzerty(Locale.FRENCH, "azerty", "AZERTY (French)"),
     BeAzerty(Locale("nl", "BE"), "azerty", "AZERTY (Belgium)"),
-    Numeric(Locale.ROOT, "numeric", "Numeric (lockscreen)")
+    Numeric(Locale.ROOT, "numeric", "Numeric (Keypad)")
     ;
 
     val uniqueId: String = "${locale}_$variant"
