@@ -103,11 +103,6 @@ fun Lp3KeyboardWrapper(
             verticalAlignment = Alignment.Bottom
         ) {
             if (layoutOptions.displayCloseButton || overlay != null) {
-                // Plain clickable, NOT a Material Button: the Button's bounded
-                // ripple flashed a white rectangle over the hit box on press
-                // (LP3 feedback 2026-09-09) — the panel grammar has no ripple
-                // anywhere else. The haptic comes from the callback press path
-                // (see below), not from any indication.
                 Box(
                     modifier = Modifier
                         .height(28.dp)
@@ -118,11 +113,6 @@ fun Lp3KeyboardWrapper(
                             if (onOverlayDismissed != null) {
                                 onOverlayDismissed()
                             } else {
-                                // The chevron is not a key — without the press
-                                // half of the key flow, consumers that haptic on
-                                // press (the viewmodels' haptic lambda) stayed
-                                // silent on it. No consumer acts on Close at
-                                // press time.
                                 callback.onSpecialKeyPressed(SpecialKey.Close)
                                 callback.onSpecialKeyReleased(SpecialKey.Close)
                             }
