@@ -109,6 +109,11 @@ fun Lp3KeyboardWrapper(
                         if (onOverlayDismissed != null) {
                             onOverlayDismissed()
                         } else {
+                            // The chevron is a Compose Button, not a key — without
+                            // the press half of the key flow, consumers that haptic
+                            // on press (the viewmodels' haptic lambda) stayed silent
+                            // on it. No consumer acts on Close at press time.
+                            callback.onSpecialKeyPressed(SpecialKey.Close)
                             callback.onSpecialKeyReleased(SpecialKey.Close)
                         }
                     },
