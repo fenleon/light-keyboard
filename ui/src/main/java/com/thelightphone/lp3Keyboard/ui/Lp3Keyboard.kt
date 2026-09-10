@@ -503,7 +503,8 @@ fun RowScope.MultiLabelKey(
     labelText: String,
     key: SpecialKey,
     callback: Lp3KeyboardCallback,
-    enableKeyAnimation: Boolean
+    enableKeyAnimation: Boolean,
+    width: Dp = ICON_KEY_WIDTH_DP.dp,
 ) {
     var pressed by remember { mutableStateOf(false) }
     val onPressed = remember(key, callback) { { callback.onSpecialKeyPressed(key) } }
@@ -511,7 +512,7 @@ fun RowScope.MultiLabelKey(
     val onLongPressed = remember(key, callback) { { callback.onSpecialKeyLongPressed(key) } }
     Box(
         modifier = Modifier
-            .width(ICON_KEY_WIDTH_DP.dp)
+            .width(width)
             .fillMaxHeight()
             .keyInput(
                 inputKey = labelText,
