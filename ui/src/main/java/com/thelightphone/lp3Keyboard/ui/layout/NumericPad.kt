@@ -119,7 +119,8 @@ object NumericPadAltLayout : Layout {
 
 /**
  * The symbols layer for [NumericPadAltLayout]: digit positions carry symbols
- * (`=` `/` `*` / `(` `)` `-` / `#` `,` `+`), `0` becomes `.`, and `123`
+ * (`=` `/` `*` / `(` `)` `-` / `#` `%` `+`), `0` becomes `.` (long-press
+ * offers `,` to the consumer, as in [NumericPadLayout]), and `123`
  * ([SpecialKey.Letters]) returns to the digits.
  */
 object NumericPadSymbolsLayout : Layout {
@@ -129,7 +130,7 @@ object NumericPadSymbolsLayout : Layout {
     private val SYMBOL_ROWS = listOf(
         listOf('=', '/', '*'),
         listOf('(', ')', '-'),
-        listOf('#', ',', '+'),
+        listOf('#', '%', '+'),
     )
 
     @Composable
