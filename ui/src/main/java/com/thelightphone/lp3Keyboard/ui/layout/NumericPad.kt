@@ -5,9 +5,6 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -71,15 +68,12 @@ object NumericPadBareLayout : Layout {
 }
 
 /**
- * Digits with a dual-function bottom-left key that alternates between `.`
- * and `,`: it always shows the character the next tap inserts, and the
- * consumer flips [nextSymbol] after each insert.
+ * The decimal-comma counterpart of [NumericPadLayout]: `,` is the primary
+ * bottom-left key and a long-press offers `.` to the consumer.
  */
-object NumericPadMorphLayout : Layout {
+object NumericPadCommaLayout : Layout {
     override val isRootLayout: Boolean
         get() = true
-
-    var nextSymbol by mutableStateOf('.')
 
     @Composable
     override fun ColumnScope.Render(
@@ -88,7 +82,7 @@ object NumericPadMorphLayout : Layout {
     ) {
         DigitRows(options, callback)
         DefaultRow(height = ROW_HEIGHT_DP.dp) {
-            Key(nextSymbol.code, callback, null, options.enableKeyAnimation, width = KEY_WIDTH_DP.dp)
+            Key(','.code, callback, null, options.enableKeyAnimation, width = KEY_WIDTH_DP.dp)
             Key('0'.code, callback, null, options.enableKeyAnimation, width = KEY_WIDTH_DP.dp)
             BackspaceKey(options, callback)
         }
